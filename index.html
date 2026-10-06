@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Портфолио BLVDE — графический дизайн, айдентика, оформление социальных сетей и дизайн для маркетплейсов.">
+    <title>BLVDE — портфолио графического дизайнера</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #070707;
+            --dark: #0d0d0d;
+            --dark2: #111111;
+            --gray: #777777;
+            --light: #eeeeee;
+            --orange: #cc5500;
+            --red: #ff3154;
+            --border: rgba(255,255,255,0.12);
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background: var(--black);
+            color: var(--light);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        button {
+            font-family: inherit;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: -2;
+        }
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(circle at 80% 20%, rgba(255,140,0,0.05), transparent 30%),
+                radial-gradient(circle at 10% 80%, rgba(255,140,0,0.04), transparent 30%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 82px;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            background: rgba(7,7,7,0.88);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        .header-inner {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+.logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 30px;
+            color: var(--orange);
+            letter-spacing: -1px;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        nav a {
+            padding: 30px 20px;
+            color: #888;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            transition: 0.25s;
+        }
+        nav a:hover,
+        nav a.active {
+            color: var(--orange);
+        }
+        .page {
+            display: none;
+        }
+        .page.active-page {
+            display: block;
+        }
+        .container-custom {
+            width: 90%;
+            max-width: 1400px;
+            margin: auto;
+        }
+        .section {
+            padding: 130px 0;
+        }
+        .section-label{
+            color: var(--orange);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+        .section-title {
+            margin-bottom: 40px;
+            font-size: clamp(38px, 6vw, 72px);
+            line-height: 1;
+            font-weight: 800;
+            letter-spacing: -2px;
+        }
+        .hero {
+            min-height: 100vh;
+            padding-top: 82px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .hero-small {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--orange);
+            font-size: 12px;
+            margin-bottom: 25px;
+        }
+        .hero-title {
+            font-size: clamp(65px, 10vw, 150px);
+            line-height: 0.82;
+            font-weight: 900;
+            letter-spacing: -8px;
+            text-transform: uppercase;
+        }
+        .hero-title span {
+            color: var(--orange);
+        }
+        .hero-description {
+            max-width: 650px;
+            margin-top: 40px;
+            color: #9b9b9b;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .hero-actions {
+            margin-top: 40px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .button-primary {
+            display: inline-block;
+            border: 1px solid var(--orange);
+            background: var(--orange);
+            color: #000;
+            padding: 16px 25px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            transition: 0.25s;
+            text-align: center;
+            text-decoration: none;
+        }
+        .button-primary:hover {
+            background: transparent;
+            color: var(--orange);
+            transform: translateY(-3px);
+        }
+        .button-secondary {
+            display: inline-block;
+            border: 1px solid var(--border);
+            color: white;
+            padding: 16px 25px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            transition: 0.25s;
+            text-align: center;
+            text-decoration: none;
+        }
+        .button-secondary:hover {
+            border-color: var(--orange);
+            color: var(--orange);
+            transform: translateY(-3px);
+        }
+        .services-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .service-card {
+            flex: 1 1 30%;
+            min-width: 280px;
+            padding: 35px;
+            min-height: 280px;
+            border: 1px solid var(--border);
+            background: #0b0b0b;
+            position: relative;
+            transition: 0.3s;
+        }
+        .service-card:hover {
+            border-color: var(--orange);
+            transform: translateY(-7px);
+            background: #101010;
+        }
+        .service-number {
+            color: var(--orange);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+        }
+        .service-icon {
+            font-size: 32px;
+            margin: 35px 0 25px;
+            color: var(--orange);
+        }
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        .service-card p {
+            color: #777;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 15px;
+        }
+        .work {
+            min-height: 350px;
+            width: 100%;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+            padding: 0;
+            background-size: cover;
+            background-position: center;
+            transition: 0.4s;
+            color: inherit;
+            font: inherit;
+            text-align: left;
+            cursor: pointer;
+        }
+        .work::after {
+            content: "СМОТРЕТЬ РАБОТЫ +";
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 8px 10px;
+            background: rgba(7,7,7,0.75);
+            color: var(--light);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+        }
+        .work[aria-expanded="true"]::after {
+            content: "СКРЫТЬ −";
+        }
+        .work:focus-visible {
+            outline: 2px solid var(--orange);
+            outline-offset: 4px;
+        }
+        .work-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+            padding: 25px;
+            border: 1px solid var(--border);
+            background: #0b0b0b;
+        }
+        .work-gallery[hidden] {
+            display: none;
+        }
+        .work-gallery h2 {
+            grid-column: 1 / -1;
+            margin: 0;
+            color: var(--orange);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 16px;
+        }
+        .work-gallery p {
+            grid-column: 1 / -1;
+            margin: -8px 0 0;
+            color: #888;
+            font-size: 12px;
+        }
+        .work-gallery a {
+            display: block;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: #070707;
+        }
+        .work-gallery img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: contain;
+            transition: transform 0.3s;
+        }
+        .work-gallery a:hover img {
+            transform: scale(1.04);
+        }
+        .work-group:nth-child(1) {
+            grid-column: span 7;
+        }
+        .work-group:nth-child(1) .work {
+            background-image:
+                linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.75)),
+                url("branding/блейд-ава-2.png");
+            background-size: cover;
+            background-position: center;
+        }
+        .work-group:nth-child(2) {
+            grid-column: span 5;
+        }
+        .work-group:nth-child(2) .work {
+            background-image:
+                linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.75)),
+                url("identity/image 2.jpg");
+        }
+        .work-group:nth-child(3) {
+            grid-column: span 5;
+        }
+        .work-group:nth-child(3) .work {
+            background-image:
+                linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.75)),
+                url("covers/Мафия-без-конутра.png");
+        }
+        .work-group:nth-child(4) {
+            grid-column: span 7;
+        }
+        .work-group:nth-child(4) .work {
+            background-image:
+                linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.75)),
+                url("digital-design/image-7.png");
+            background-size: cover, 105% auto;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .work-group.is-open {
+            grid-column: 1 / -1;
+        }
+        .work:hover {
+            transform: scale(0.985);
+            border-color: var(--orange);
+        }
+        .work-info {
+            position: absolute;
+            left: 25px;
+            right: 25px;
+            bottom: 25px;
+        }
+        .work-info small {
+            color: var(--orange);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 20px;
+        }
+        .work-info h3 {
+            font-size: 28px;
+            margin-top: 7px;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 80px;
+            align-items: center;
+        }
+        .about-number {
+            font-size: 180px;
+            font-weight: 900;
+            line-height: 0.7;
+            color: rgba(255,140,0,0.08);
+        }
+        .about-text h2 {
+            font-size: 48px;
+            margin-bottom: 25px;
+        }
+        .about-text p {
+            color: #888;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+        .about-socials {
+            display: grid;
+            gap: 14px;
+            margin-top: 30px;
+        }
+        .about-social-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: fit-content;
+            color: #bdbdbd;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            transition: 0.25s;
+        }
+        .about-social-link i,
+        .about-social-link .vk-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            flex: 0 0 28px;
+            color: var(--orange);
+            font-size: 26px;
+            transition: 0.25s;
+        }
+        .about-social-link .vk-icon {
+            fill: currentColor;
+        }
+        .about-social-link:hover {
+            color: var(--orange);
+        }
+        .about-social-link:focus-visible {
+            outline: 2px solid var(--orange);
+            outline-offset: 5px;
+        }
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        .skill {
+            border: 1px solid var(--border);
+            padding: 9px 13px;
+            color: #999;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            transition: 0.25s;
+        }
+        .skill:hover {
+            color: var(--orange);
+            border-color: var(--orange);
+        }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 40px 5%;
+            margin-top: 50px;
+        }
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .footer-copy {
+            color: #555;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+        }
+        .footer-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #666;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+        }
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--orange);
+            border-radius: 50%;
+        }
+        .mobile-menu {
+            display: none;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: white;
+            font-size: 25px;
+        }
+        .mobile-menu:focus-visible,
+        a:focus-visible {
+            outline: 2px solid var(--orange);
+            outline-offset: 4px;
+        }
+        @media (max-width: 1100px) {
+            nav {
+                display: none;
+            }
+            nav.open {
+                display: flex;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                padding: 20px;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                background: #080808;
+                border-bottom: 1px solid var(--border);
+                transform: none;
+            }
+            nav.open a {
+                padding: 15px 10px;
+            }
+            .mobile-menu {
+                display: block;
+                padding: 4px 10px;
+                cursor: pointer;
+            }
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .about-number {
+                font-size: 100px;
+            }
+        }
+        @media (max-width: 700px) {
+            header {
+                height: 70px;
+                padding: 0 20px;
+            }
+            .section {
+                padding: 90px 0;
+            }
+            .container-custom {
+                width: 88%;
+            }
+            .hero {
+                padding-top: 70px;
+            }
+            .hero-title {
+                letter-spacing: -4px;
+            }
+            .hero-description {
+                font-size: 13px;
+            }
+            .works-grid {
+                display: flex;
+                flex-direction: column;
+            }
+            .work-group {
+                width: 100%;
+            }
+            .work-gallery {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                padding: 15px;
+            }
+            .work {
+                min-height: 280px;
+            }
+            .footer-inner {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-inner">
+        <a href="#home" class="logo">
+            <span>BLVDE</span>
+        </a>
+        <nav id="siteNav" aria-label="Основная навигация">
+            <a href="#home" class="nav-link active">
+                Главная
+            </a>
+            <a href="#works" class="nav-link">
+                Работы
+            </a>
+            <a href="#about" class="nav-link">
+                 Обо мне
+            </a>
+        </nav>
+        <button
+            class="mobile-menu"
+            type="button"
+            aria-label="Открыть меню"
+            aria-controls="siteNav"
+            aria-expanded="false">
+            <i class="bi bi-list" aria-hidden="true"></i>
+        </button>
+    </div>
+</header>
+<main>
+<section id="home" class="page active-page">
+    <div class="hero">
+        <div class="container-custom">
+            <div class="hero-grid">
+                <div>
+                    <div class="hero-small">
+                        [ ГРАФИЧЕСКИЙ ДИЗАЙН / 2026 ]
+                    </div>
+                    <h1 class="hero-title">
+                        BLVDE<br>
+                        <span>design</span>
+                    </h1>
+                    <p class="hero-description">
+                        Создаю визуальные решения для брендов, бизнеса
+                        и цифровых продуктов. Логотипы, фирменный стиль,
+                        оформление социальных сетей, рекламные материалы
+                        и дизайн маркетплейсов.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#works" class="button-primary">
+                            Смотреть работы
+                        </a>
+                        <a
+                            href="#about"
+                            class="button-secondary">
+                            Обо мне
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="section">
+        <div class="container-custom">
+            <div class="section-label">
+                [ ЧЕМ Я ЗАНИМАЮСЬ ]
+            </div>
+            <h2 class="section-title">
+                Дизайн,<br>
+                который работает
+            </h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-number">01</div>
+                    <div class="service-icon">
+                        <i class="bi bi-bezier2"></i>
+                    </div>
+                    <h3>Айдентика</h3>
+                    <p>
+                        Создание логотипа, цветовой системы,
+                        типографики и визуального языка бренда.
+                    </p>
+                </div>
+                <div class="service-card">
+                    <div class="service-number">02</div>
+                    <div class="service-icon">
+                        <i class="bi bi-grid"></i>
+                    </div>
+                    <h3>Оформление</h3>
+                    <p>
+                        Дизайн социальных сетей, рекламных материалов,
+                        презентаций, баннеров и обложек.
+                    </p>
+                </div>
+                <div class="service-card">
+                    <div class="service-number">03</div>
+                    <div class="service-icon">
+                        <i class="bi bi-bag"></i>
+                    </div>
+                    <h3>Маркетплейсы</h3>
+                    <p>
+                        Продающие карточки товаров для Ozon,
+                        Wildberries и других площадок.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+<section id="works" class="page">
+    <div class="section">
+        <div class="container-custom">
+            <h1 class="section-title">
+                Чем я занимаюсь
+            </h1>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-number">01 / ЛОГОТИП</div>
+                        <div class="service-icon">
+                            <i class="bi bi-vector-pen"></i>
+                        </div>
+                        <h3>Логотип</h3>
+                        <p>
+                            Уникальный знак, который помогает компании
+                            выделиться среди конкурентов и запомниться
+                            аудитории.
+                        </p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-number">02 / БРЕНДИНГ</div>
+                        <div class="service-icon">
+                            <i class="bi bi-palette"></i>
+                        </div>
+                        <h3>Фирменный стиль</h3>
+                        <p>
+                            Полная визуальная система бренда:
+                            цвета, шрифты, графика, правила использования
+                            и оформление носителей.
+                        </p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-number">03 / СОЦИАЛЬНЫЕ СЕТИ</div>
+                        <div class="service-icon">
+                            <i class="bi bi-phone"></i>
+                        </div>
+                        <h3>Социальные сети</h3>
+                        <p>
+                            Аватарки, обложки, посты, рекламные публикации
+                            и единое оформление страницы.
+                        </p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-number">04 / МАРКЕТПЛЕЙСЫ</div>
+                        <div class="service-icon">
+                            <i class="bi bi-shop"></i>
+                        </div>
+                        <h3>Карточки товаров</h3>
+                        <p>
+                            Современные карточки товаров с акцентом
+                            на преимущества продукта и понятную подачу
+                            информации.
+                        </p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-number">05 / ОБЛОЖКИ</div>
+                        <div class="service-icon">
+                            <i class="bi bi-image"></i>
+                        </div>
+                        <h3>Обложки</h3>
+                        <p>
+                            Обложки для музыкальных релизов
+                            и творческих проектов.
+                        </p>
+                    </div>
+                </div>
+                    <div class="section-label mt-5">
+                        [ 03 / ПОРТФОЛИО ]
+                    </div>
+                    <h2 class="section-title">
+                        Избранные<br>
+                        работы
+                    </h2>
+                    <div class="works-grid">
+                        <div class="work-group">
+                            <button
+                                class="work"
+                                type="button"
+                                aria-expanded="false"
+                                aria-controls="gallery-branding">
+                                <div class="work-info">
+                                    <small>01 / БРЕНДИНГ</small>
+                                </div>
+                            </button>
+                            <div class="work-gallery" id="gallery-branding" role="region" aria-labelledby="gallery-branding-title" hidden>
+                                <h2 id="gallery-branding-title">Другие работы: брендинг</h2>
+                                <p>Нажмите на изображение, чтобы открыть его в полном размере.</p>
+                                <a href="branding/Шапка.png" target="_blank" rel="noopener">
+                                    <img src="branding/Шапка.png" alt="Брендинг и шапка для проекта" loading="lazy">
+                                </a>
+                                <a href="branding/Вк-шапка.png" target="_blank" rel="noopener">
+                                    <img src="branding/Вк-шапка.png" alt="Шапка для VK и социального бренда" loading="lazy">
+                                </a>
+                                <a href="branding/блейд-ава-2.png" target="_blank" rel="noopener">
+                                    <img src="branding/блейд-ава-2.png" alt="Аватар бренда BLVDE" loading="lazy">
+                                </a>
+                                <a href="branding/Ава.png" target="_blank" rel="noopener">
+                                    <img src="branding/Ава.png" alt="Аватар для фирменного стиля" loading="lazy">
+                                </a>
+                                <a href="branding/1ф.jpg" target="_blank" rel="noopener">
+                                    <img src="branding/1ф.jpg" alt="Графическая работа по брендингу" loading="lazy">
+                                </a>
+                                <a href="branding/й.jpg" target="_blank" rel="noopener">
+                                    <img src="branding/й.jpg" alt="Дополнительная работа по брендингу" loading="lazy">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="work-group">
+                            <button
+                                class="work"
+                                type="button"
+                                aria-expanded="false"
+                                aria-controls="gallery-identity">
+                                <div class="work-info">
+                                    <small>02 / АЙДЕНТИКА</small>
+                                </div>
+                            </button>
+                            <div class="work-gallery" id="gallery-identity" role="region" aria-labelledby="gallery-identity-title" hidden>
+                                <h2 id="gallery-identity-title">Другие работы: айдентика</h2>
+                                <p>Нажмите на изображение, чтобы открыть его в полном размере.</p>
+                                <a href="identity/Green-line.png" target="_blank" rel="noopener">
+                                    <img src="identity/Green-line.png" alt="Логотип и фирменный стиль Green Line" loading="lazy">
+                                </a>
+                                <a href="identity/Moon-wine.png" target="_blank" rel="noopener">
+                                    <img src="identity/Moon-wine.png" alt="Айдентика бренда Moon Wine" loading="lazy">
+                                </a>
+                                <a href="identity/визитка-1.png" target="_blank" rel="noopener">
+                                    <img src="identity/визитка-1.png" alt="Дизайн визитной карточки" loading="lazy">
+                                </a>
+                                <a href="identity/Logo-luna.png" target="_blank" rel="noopener">
+                                    <img src="identity/Logo-luna.png" alt="Логотип Luna" loading="lazy">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="work-group">
+                            <button
+                                class="work"
+                                type="button"
+                                aria-expanded="false"
+                                aria-controls="gallery-covers">
+                                <div class="work-info">
+                                    <small>03 / ОБЛОЖКИ</small>
+                                </div>
+                            </button>
+                            <div class="work-gallery" id="gallery-covers" role="region" aria-labelledby="gallery-covers-title" hidden>
+                                <h2 id="gallery-covers-title">Другие работы: обложки</h2>
+                                <p>Нажмите на изображение, чтобы открыть его в полном размере.</p>
+                                <a href="covers/Мафия-без-конутра.png" target="_blank" rel="noopener">
+                                    <img src="covers/Мафия-без-конутра.png" alt="Обложка «Мафия без конутра»" loading="lazy">
+                                </a>
+                                <a href="covers/ghost cod.png" target="_blank" rel="noopener">
+                                    <img src="covers/ghost cod.png" alt="Обложка Ghost COD" loading="lazy">
+                                </a>
+                                <a href="covers/phoenix.png" target="_blank" rel="noopener">
+                                    <img src="covers/phoenix.png" alt="Обложка Phoenix" loading="lazy">
+                                </a>
+                                <a href="covers/death-phonk.png" target="_blank" rel="noopener">
+                                    <img src="covers/death-phonk.png" alt="Обложка Death Phonk" loading="lazy">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="work-group">
+                            <button
+                                class="work"
+                                type="button"
+                                aria-expanded="false"
+                                aria-controls="gallery-digital">
+                                <div class="work-info">
+                                    <small>04 / ЦИФРОВОЙ ДИЗАЙН</small>
+                                </div>
+                            </button>
+                            <div class="work-gallery" id="gallery-digital" role="region" aria-labelledby="gallery-digital-title" hidden>
+                                <h2 id="gallery-digital-title">Другие работы: цифровой дизайн</h2>
+                                <p>Нажмите на изображение, чтобы открыть его в полном размере.</p>
+                                <a href="digital-design/image-7.png" target="_blank" rel="noopener">
+                                    <img src="digital-design/image-7.png" alt="Цифровой дизайн и афиша Techno Kobiet" loading="lazy">
+                                </a>
+                                <a href="digital-design/Наушники-3.png" target="_blank" rel="noopener">
+                                    <img src="digital-design/Наушники-3.png" alt="Дизайн карточки игровых наушников" loading="lazy">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+    </div>
+</section>
+<section id="about" class="page">
+    <div class="section">
+        <div class="container-custom">
+            <div class="section-label">
+                [ 03 / ОБО МНЕ ]
+            </div>
+            <div class="about-grid">
+                <div class="about-number" aria-hidden="true">01</div>
+                <div class="about-text">
+                    <h2>BLVDE</h2>
+                    <p>
+                        Меня зовут Ярослав, я графический дизайнер,
+                        который помогает клиентам создавать узнаваемый
+                        визуальный образ.
+                    </p>
+                    <p>
+                        В работе совмещаю минимализм, современную типографику,
+                        контрастные композиции и цифровую эстетику.
+                    </p>
+                    <p>
+                        Моя задача — не просто сделать красиво, а создать
+                        дизайн, который продвигает ваш проект.
+                    </p>
+                    <div class="about-socials" aria-label="Контакты">
+                        <a class="about-social-link" href="https://vk.ru/murder_in_my_mind" target="_blank" rel="noopener noreferrer" aria-label="ВКонтакте: vk.ru/murder_in_my_mind">
+                            <svg class="vk-icon" viewBox="0 0 32 20" aria-hidden="true" focusable="false">
+                                <text x="0" y="17" font-family="Arial, sans-serif" font-size="18" font-weight="900" letter-spacing="-1">VK</text>
+                            </svg>
+                            <span>vk.ru/murder_in_my_mind</span>
+                        </a>
+                        <a class="about-social-link" href="https://t.me/Murder_inmy_mind" target="_blank" rel="noopener noreferrer" aria-label="Telegram: t.me/Murder_inmy_mind">
+                            <i class="bi bi-telegram" aria-hidden="true"></i>
+                            <span>t.me/Murder_inmy_mind</span>
+                        </a>
+                        <a class="about-social-link" href="mailto:aperewertaylo04@gmail.com" aria-label="Почта: aperewertaylo04@gmail.com">
+                            <i class="bi bi-envelope-fill" aria-hidden="true"></i>
+                            <span>aperewertaylo04@gmail.com</span>
+                        </a>
+                    </div>
+                    <div class="skills">
+                        <div class="skill">
+                            Adobe Photoshop
+                        </div>
+                        <div class="skill">
+                            Adobe Illustrator
+                        </div>
+                        <div class="skill">
+                            Figma
+                        </div>
+                        <div class="skill">
+                            Веб-дизайн
+                        </div>
+                        <div class="skill">
+                            Рекламный дизайн
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
+<script>
+    const pages = document.querySelectorAll('.page');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const nav = document.getElementById('siteNav');
+    const mobileMenuButton = document.querySelector('.mobile-menu');
+    const workGroups = document.querySelectorAll('.work-group');
+    workGroups.forEach(group => {
+        const button = group.querySelector('.work');
+        const gallery = group.querySelector('.work-gallery');
+        button.addEventListener('click', function() {
+            const willOpen = this.getAttribute('aria-expanded') !== 'true';
+            workGroups.forEach(otherGroup => {
+                const otherButton = otherGroup.querySelector('.work');
+                const otherGallery = otherGroup.querySelector('.work-gallery');
+                const isOpen = otherGroup === group && willOpen;
+                otherGroup.classList.toggle('is-open', isOpen);
+                otherButton.setAttribute('aria-expanded', String(isOpen));
+                otherGallery.hidden = !isOpen;
+            });
+            if (willOpen) {
+                gallery.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest'
+                });
+            }
+        });
+    });
+    function showPage(id) {
+        const target = document.getElementById(id.slice(1));
+        if (!target || !target.classList.contains('page')) {
+            return;
+        }
+        pages.forEach(page => page.classList.toggle('active-page', page === target));
+        navLinks.forEach(link => {
+            const isCurrentPage = link.getAttribute('href') === id;
+            link.classList.toggle('active', isCurrentPage);
+            if (isCurrentPage) {
+                link.setAttribute('aria-current', 'page');
+            } else {
+                link.removeAttribute('aria-current');
+            }
+        });
+        nav.classList.remove('open');
+        mobileMenuButton.setAttribute('aria-expanded', 'false');
+        mobileMenuButton.setAttribute('aria-label', 'Открыть меню');
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            const target = document.getElementById(href.slice(1));
+            if (target && target.classList.contains('page')) {
+                e.preventDefault();
+                if (window.location.hash !== href) {
+                    window.location.hash = href;
+                }
+                showPage(href);
+            }
+        });
+    });
+    mobileMenuButton.addEventListener('click', function() {
+        const isOpen = nav.classList.toggle('open');
+        this.setAttribute('aria-expanded', String(isOpen));
+        this.setAttribute('aria-label', isOpen ? 'Закрыть меню' : 'Открыть меню');
+    });
+    function loadFromHash() {
+        const hash = window.location.hash;
+        const target = hash ? document.getElementById(hash.slice(1)) : null;
+        if (target && target.classList.contains('page')) {
+            showPage(hash);
+        } else {
+            showPage('#home');
+        }
+    }
+    window.addEventListener(
+        'hashchange',
+        loadFromHash
+    );
+    loadFromHash();
+</script>
+</body>
+</html>
